@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: sql-deploy
+   labels:
+      app: sql
+
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: sql
+ template:
+    metadata:
+     labels:
+       app: sql
+    spec:
+      containers:
+         - name: sql-deploy
+           image: mysql:latest
+           env: 
+              - name: MYSQL_ROOT_PASSWORD
+                value: "pass"
+              - name: MYSQL_DATABASE
+                value: "mydb"
+              - name: MYSQL_USER
+                value: "admin"
+              - name: MYSQL_PASSWORD
+                value: "pass"
+           ports:
+               - containerPort: 3306
+           volumeMounts:
+               - name: mysqldata
+                 mountPath: /var/lib/mysql     
+      volumes: 
+         - name: mysqldata
+                  
+                                
+                                    
+
+

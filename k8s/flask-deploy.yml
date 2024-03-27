@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: flask-deploy
+ labels:
+   app: two
+
+spec:
+ replicas: 1
+ selector:
+  matchLabels: 
+   app: two                    
+ template:
+  metadata: 
+   labels:
+     app: two
+  spec:
+   containers:
+     - name: flask-deploy
+       image: rkatrap/flask:latest
+       env: 
+         - name: MYSQL_HOST
+           value: "10.110.33.68"
+         - name: MYSQL_USER
+           value: "admin"
+         - name: MSQL_PASSWORD
+           value: "pass"
+         - name: MYSQL_DB
+           value:  "mydb"
+       ports: 
+          - containerPort: 5000   
+                                            
+       imagePullPolicy: Always 

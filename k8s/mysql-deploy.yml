@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
          - name: sql-deploy
-           image: mysql:latest
+           image: mysql:latest  
            env: 
               - name: MYSQL_ROOT_PASSWORD
                 value: "pass"
@@ -34,7 +34,8 @@ spec:
                  mountPath: /var/lib/mysql     
       volumes: 
          - name: mysqldata
-                  
+           persistentVolumeClaim: 
+            claimName: pvc       
                                 
                                     
 

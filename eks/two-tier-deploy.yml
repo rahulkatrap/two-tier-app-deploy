@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: two-tier-app
+   labels: 
+     app: two
+
+spec: 
+   replicas: 1
+   selectors:
+      matchLabels:
+        app: two
+   template: 
+    metadata: 
+     labels: 
+      app: two
+    spec: 
+     containers:
+       - name: two-app
+         image: rkatrap/flask:latest
+         env: 
+          - name: MYSQL_HOST
+            value:  10.109.105.135 
+          - name: MYSQL_USER
+            value: "admin"
+          - name: MSQL_PASSWORD
+            value: "pass"
+          - name: MYSQL_DB
+            value:  "mydb"  
+          ports: 
+            - containerPort: 5000
+
+          imagePullPolicy: Always

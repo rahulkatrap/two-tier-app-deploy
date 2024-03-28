@@ -23,7 +23,7 @@ spec:
            value:  10.110.196.233
          - name: MYSQL_USER
            value: "admin"
-         - name: MSQL_PASSWORD
+         - name: MYSQL_PASSWORD
            value: "root"
          - name: MYSQL_DB
            value:  "mydb"

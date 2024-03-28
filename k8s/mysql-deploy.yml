@@ -20,13 +20,13 @@ spec:
            image: mysql:latest  
            env: 
               - name: MYSQL_ROOT_PASSWORD
-                value: "pass"
+                value: "admin"
               - name: MYSQL_DATABASE
                 value: "mydb"
               - name: MYSQL_USER
                 value: "admin"
               - name: MYSQL_PASSWORD
-                value: "pass"
+                value: "admin"
            ports:
                - containerPort: 3306
            volumeMounts:
@@ -35,7 +35,7 @@ spec:
       volumes: 
          - name: mysqldata
            persistentVolumeClaim: 
-            claimName: pvc       
+            claimName: mysql-pvc       
                                 
                                     
 

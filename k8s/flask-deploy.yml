@@ -20,11 +20,11 @@ spec:
        image: rkatrap/flask:latest
        env: 
          - name: MYSQL_HOST
-           value:  10.110.196.233
+           value:  10.110.90.167
          - name: MYSQL_USER
            value: "admin"
          - name: MYSQL_PASSWORD
-           value: "root"
+           value: "admin"
          - name: MYSQL_DB
            value:  "mydb"
        ports: 

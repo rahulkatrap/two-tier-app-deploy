@@ -31,12 +31,12 @@ spec:
                - containerPort: 3306
            volumeMounts:
                - name: mysqldata
-                 mountPath: /var/lib/mysql     
+                 mountPath: /docker-entrypoint-initdb.d/     
       volumes: 
          - name: mysqldata
            persistentVolumeClaim: 
             claimName: mysql-pvc       
-                                
+             
                                     
 
 

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
          - name: sql-deploy
-           image: mysql:latest  
+           image: rkatrap/sql  
            env: 
               - name: MYSQL_ROOT_PASSWORD
                 value: "admin"

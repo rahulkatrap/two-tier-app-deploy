@@ -21,9 +21,9 @@ pipeline{
                 sh "docker push rkatrap/flask"
             }
         }
-        stage("test"){
+        stage("depoly"){
             steps{
-                sh "docker-compose up"
+                sh "docker-compose down && docker-compose up"
             }
         }
     }

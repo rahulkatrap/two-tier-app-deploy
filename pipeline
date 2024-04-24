@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    stages{
+        stage("git"){
+            steps{
+                 git url:"https://github.com/rahulkatrap/two-tier-app-deploy.git " , branch: "master"
+            }
+        }
+        stage("build"){
+            steps {
+                sh " docker build -t rkatrap/flask ."
+            }
+        }
+        stage("push"){
+            steps{
+                sh "echo push to dockerhub"
+                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"Pass",usernameVariable:"userid")]){
+                sh "docker login -u ${env.userid} -p${env.Pass}"
+                    
+                }
+                sh "docker push rkatrap/flask"
+            }
+        }
+        stage("test"){
+            steps{
+                sh "docker-compose up"
+            }
+        }
+    }
+}
